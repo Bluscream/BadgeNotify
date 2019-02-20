@@ -1,19 +1,18 @@
 #!/usr/bin/python3
 from json import load, dump
 from telegram import Bot, ParseMode
-import logging
+from logging import basicConfig, getLogger, FileHandler, INFO, DEBUG
 from requests import Session
 from os import path
 from config import *
 
 file = "/home/blu/bots/ts/BadgeNotify/badges.json"
+logfile = "/home/blu/bots/ts/BadgeNotify/badgenotify.log"
 tg_prefix = "[New badge modifications found](https://www.minopia.de/ts/badges):\n\n\n"
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s|%(levelname)s\t| %(message)s', filemode='a')
-log = logging.getLogger()
-fh = logging.FileHandler("/home/blu/bots/ts/BadgeNotify/badgenotify.log")
-fh.setLevel(logging.DEBUG)
-log.addHandler(fh)
+basicConfig(level=INFO, format='%(asctime)s|%(levelname)s\t| %(message)s', filemode='a')
+log = getLogger()
+log.addHandler(FileHandler(logfile).setLevel(DEBUG))
 log.info("Started!")
 session = Session()
 # badges = {}

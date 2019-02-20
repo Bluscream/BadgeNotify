@@ -4,7 +4,11 @@ from telegram import Bot, ParseMode
 from logging import basicConfig, getLogger, FileHandler, INFO, DEBUG
 from requests import Session
 from os import path
-from config import *
+
+url = "http://minopia.de/ts/badges/json.php"
+tg_token = ""
+tg_chatid = 0
+from config import * # remove this line to use the settings above
 
 file = "/home/blu/bots/ts/BadgeNotify/badges.json"
 logfile = "/home/blu/bots/ts/BadgeNotify/badgenotify.log"

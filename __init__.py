@@ -8,7 +8,6 @@ from os import path
 url = "http://minopia.de/ts/badges/json.php"
 tg_token = ""
 tg_chatid = 0
-from config import * # remove this line to use the settings above
 
 file = "/home/blu/bots/ts/BadgeNotify/badges.json"
 logfile = "/home/blu/bots/ts/BadgeNotify/badgenotify.log"
@@ -16,7 +15,9 @@ tg_prefix = "[New badge modifications found](https://www.minopia.de/ts/badges):\
 
 basicConfig(level=INFO, format='%(asctime)s|%(levelname)s\t| %(message)s', filemode='a')
 log = getLogger()
-log.addHandler(FileHandler(logfile).setLevel(DEBUG))
+fh = FileHandler(logfile)
+fh.setLevel(DEBUG)
+log.addHandler(fh)
 log.info("Started!")
 session = Session()
 # badges = {}
